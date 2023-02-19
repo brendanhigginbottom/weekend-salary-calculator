@@ -7,7 +7,7 @@ let employeeDatabase = [];
 /**
  * 
  * @param {onSubmit} event Gathers and assigns user input to variables, then calls saveEmployee and
- * addEmployee functions
+ * addEmployee functions and uses reset() to clear input fields.
  */
 function submitForm(event) {
     event.preventDefault();
@@ -21,6 +21,7 @@ function submitForm(event) {
     console.log(firstName, lastName, employeeID, title, salary);
     saveEmployee(firstName, lastName, employeeID, title, salary);
     addEmployee(firstName, lastName, employeeID, title, salary);
+    event.target.reset();
 }
 
 /**
