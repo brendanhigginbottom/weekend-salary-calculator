@@ -76,7 +76,8 @@ function deleteEmployee(event) {
 
 /**
  * Loops over employeeDatabse and adds annual salary total and 
- * creates monthly total (/12) which it appends to DOM. Background color is red if total > 20,000.
+ * creates monthly total (/12) which it appends to DOM. Background color is red if
+ * monthly total > 20,000.
  */
 function addSalary() {
     let displaySalaryTotal = document.querySelector("#salaryTotal");
@@ -85,7 +86,8 @@ function addSalary() {
     for (let salary of employeeDatabase) {
         salaryTotal += salary.AnnualSalary;
     }
-    monthlyTotal = salaryTotal / 12;
+    monthlyTotal = (salaryTotal / 12).toFixed(2);
+    // interesting (for me) to note, 20,000 seems to be a string but 20000 works?
     if (monthlyTotal > 20000) {
         displaySalaryTotal.style.backgroundColor = 'red';
         displaySalaryTotal.innerHTML = `
