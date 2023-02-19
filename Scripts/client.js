@@ -75,15 +75,25 @@ function deleteEmployee(event) {
 }
 
 /**
- * Loops over employeeDatabse and adds annual salary total and appends monthly ( / 12) total to DOM
+ * Loops over employeeDatabse and adds annual salary total and 
+ * creates monthly total (/12) which it appends to DOM. Background color is red if total > 20,000.
  */
 function addSalary() {
     let displaySalaryTotal = document.querySelector("#salaryTotal");
     let salaryTotal = 0;
+    let monthlyTotal = 0;
     for (let salary of employeeDatabase) {
         salaryTotal += salary.AnnualSalary;
     }
-    displaySalaryTotal.innerHTML = `
-        Monthly Total: $${salaryTotal / 12}
-    `;
+    monthlyTotal = salaryTotal / 12;
+    if (monthlyTotal > 20000) {
+        displaySalaryTotal.style.backgroundColor = 'red';
+        displaySalaryTotal.innerHTML = `
+        Monthly Total: $${monthlyTotal}
+        `;
+    } else {
+        displaySalaryTotal.innerHTML = `
+        Monthly Total: $${monthlyTotal}
+        `;
+    }
 }
