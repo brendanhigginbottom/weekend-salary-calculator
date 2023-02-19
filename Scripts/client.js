@@ -44,7 +44,7 @@ function saveEmployee (first, last, ID, title, salary) {
 
 /**
  * Loops over employeeDatabase and appends to DOM for each object in array, 
- * clearing the table first each time 
+ * clearing the table first each time. Also calls addSalary function.
  */
 function addEmployee () {
     let displayEmployee = document.querySelector('#employeesTableBody');
@@ -56,15 +56,34 @@ function addEmployee () {
                 <td>${employee.LastName}</td>
                 <td>${employee.ID}</td>
                 <td>${employee.Title}</td>
-                <td>${employee.AnnualSalary}</td>
+                <td>$${employee.AnnualSalary}</td>
                 <td>
                     <button onClick="deleteEmployee(event)">Delete</button>
                 </td>
             </tr>
         `;
     };
+    addSalary();
 }
 
+/**
+ * 
+ * @param {onClick} event Deletes employee information from the table
+ */
 function deleteEmployee(event) {
     event.target.parentElement.parentElement.remove();
+}
+
+/**
+ * Loops over employeeDatabse and adds annual salary total and appends monthly ( / 12) total to DOM
+ */
+function addSalary() {
+    let displaySalaryTotal = document.querySelector("#salaryTotal");
+    let salaryTotal = 0;
+    for (let salary of employeeDatabase) {
+        salaryTotal += salary.AnnualSalary;
+    }
+    displaySalaryTotal.innerHTML = `
+        Monthly Total: $${salaryTotal / 12}
+    `;
 }
