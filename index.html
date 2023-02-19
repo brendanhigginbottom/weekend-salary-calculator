@@ -11,8 +11,17 @@
 
 <body>
     <header>
-        <h1>Salary Calculator</h1>
+        <h1>Add Employee</h1>
     </header>
+    <form onSumbit="submitForm(event)">
+        <input type="text" id="firstName" placeholder="First Name">
+        <input type="text" id="lastName" placeholder="Last Name">
+        <input type="number" id="employeeID" placeholder="Employee ID">
+        <input type="text" id="title" placeholder="Title">
+        <input type="number" id="salary" placeholder="Annual Salary"> <br />
+        <input type="submit" value="Add Employee">
+    </form>
+
     
     <script src="Scripts/client.js"></script>
 </body>
