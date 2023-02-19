@@ -58,9 +58,13 @@ function addEmployee () {
                 <td>${employee.Title}</td>
                 <td>${employee.AnnualSalary}</td>
                 <td>
-                    <button onClick="deleteEmployee">Delete</button>
+                    <button onClick="deleteEmployee(event)">Delete</button>
                 </td>
             </tr>
         `;
     };
+}
+
+function deleteEmployee(event) {
+    event.target.parentElement.parentElement.remove();
 }
