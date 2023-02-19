@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>HTML Forms & Tables</title>
+    <title>Salary Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="Scripts/style.css" />
 </head>
@@ -13,12 +13,12 @@
     <h1>
         <h1>Add Employee</h1>
     </h1>
-    <form onSumbit="submitForm(event)">
-        <input type="text" id="firstName" placeholder="First Name">
-        <input type="text" id="lastName" placeholder="Last Name">
-        <input type="number" id="employeeID" placeholder="Employee ID">
-        <input type="text" id="title" placeholder="Title">
-        <input type="number" id="salary" placeholder="Annual Salary"> <br />
+    <form onSubmit="submitForm(event)">
+        <input type="text" id="firstName" placeholder="First Name" required>
+        <input type="text" id="lastName" placeholder="Last Name" required>
+        <input type="number" id="employeeID" placeholder="Employee ID" required>
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="number" id="salary" placeholder="Annual Salary" required> <br />
         <input type="submit" value="Add Employee">
     </form>
     <h2>Employees</h2>
@@ -34,7 +34,6 @@
             </tr>
         </thead>
     </table>
-    
     <script src="Scripts/client.js"></script>
 </body>
 
