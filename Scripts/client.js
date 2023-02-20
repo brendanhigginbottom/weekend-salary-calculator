@@ -20,7 +20,7 @@ function submitForm(event) {
 
     console.log(firstName, lastName, employeeID, title, salary);
     saveEmployee(firstName, lastName, employeeID, title, salary);
-    addEmployee(firstName, lastName, employeeID, title, salary);
+    addEmployee();
     event.target.reset();
 }
 
@@ -53,15 +53,15 @@ function addEmployee () {
     for (let employee of employeeDatabase) {
         displayEmployee.innerHTML += `
         <tr>
-                <td>${employee.FirstName}</td>
-                <td>${employee.LastName}</td>
-                <td>${employee.ID}</td>
-                <td>${employee.Title}</td>
-                <td>$${employee.AnnualSalary}</td>
-                <td>
-                    <button onClick="deleteEmployee(event)">Delete</button>
-                </td>
-            </tr>
+            <td>${employee.FirstName}</td>
+            <td>${employee.LastName}</td>
+            <td>${employee.ID}</td>
+            <td>${employee.Title}</td>
+            <td>$${employee.AnnualSalary}</td>
+            <td>
+                <button onClick="deleteEmployee(event)">Delete</button>
+            </td>
+        </tr>
         `;
     };
     addSalary();
@@ -69,16 +69,40 @@ function addEmployee () {
 
 /**
  * 
- * @param {onClick} event Deletes employee information from the table
+ * @param {onClick} event Deletes employee information from the table and grabs first name to pass to
+ * deleteFromEmployeeDatabase function. 
+ * Calls addEmployee after employee has been deleted which will ensure monthly total is accurate.
+ * *NOTE* I believe this will delete ALL employees with same first name. 
+ * Could grab additional info (or maybe just ID?) for more precise deletion 
+ * but we're already in stretch mode!
  */
 function deleteEmployee(event) {
+    let employee = event.target.parentElement.parentElement.firstElementChild.innerHTML;
+    console.log(employee);
     event.target.parentElement.parentElement.remove();
+    deleteFromEmployeeDatabase(employee);
+    addEmployee();
+}
+
+/**
+ * 
+ * @param {string} employee Loops over employeeDatabase and splices the array at the index of the
+ * match, removing it permanently from the array. Logged what was deleted and the new employeeDatabase
+ * to ensure it was functioning correctly. 
+ */
+function deleteFromEmployeeDatabase(employee) {
+    for (let toDelete of employeeDatabase) {
+        if (employee === toDelete.FirstName) {
+            console.log(employeeDatabase.splice(employeeDatabase.indexOf(toDelete), 1));
+        }
+    }
+    console.log(employeeDatabase);
 }
 
 /**
  * Loops over employeeDatabse and adds annual salary total and 
  * creates monthly total (/12) which it appends to DOM. Background color is red if
- * monthly total > 20,000.
+ * monthly total > 20,000, white (default) otherwise which flips it back if it was ever made red.
  */
 function addSalary() {
     let displaySalaryTotal = document.querySelector("#salaryTotal");
@@ -95,6 +119,7 @@ function addSalary() {
         Monthly Total: $${monthlyTotal}
         `;
     } else {
+        displaySalaryTotal.style.backgroundColor = 'white';
         displaySalaryTotal.innerHTML = `
         Monthly Total: $${monthlyTotal}
         `;
