@@ -101,8 +101,9 @@ function deleteFromEmployeeDatabase(employee) {
 
 /**
  * Loops over employeeDatabse and adds annual salary total and 
- * creates monthly total (/12) which it appends to DOM. Background color is red if
- * monthly total > 20,000, white (default) otherwise which flips it back if it was ever made red.
+ * creates monthly total (/12 and limited to two decimal points) which it appends to DOM. 
+ * Background color is red if monthly total > 20,000 and white (default) 
+ * which flips it back if it was ever made red.
  */
 function addSalary() {
     let displaySalaryTotal = document.querySelector("#salaryTotal");
