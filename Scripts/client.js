@@ -25,7 +25,7 @@ function submitForm(event) {
 }
 
 /**
- * 
+ * Pushes information submitted to a global array of objects
  * @param {string} first Employee First Name from form
  * @param {string} last Employee surname from form
  * @param {number} ID Employee ID from form
@@ -72,7 +72,8 @@ function addEmployee () {
  * @param {onClick} event Deletes employee information from the table and grabs first name to pass to
  * deleteFromEmployeeDatabase function. 
  * Calls addEmployee after employee has been deleted which will ensure monthly total is accurate.
- * *NOTE* I believe this will delete ALL employees with same first name. 
+ * *NOTE - This only works if there are no duplicate names. Deletes first instance if two of same name, 
+ * *even weirder after that. 
  * Could grab additional info (or maybe just ID?) for more precise deletion 
  * but we're already in stretch mode!
  */
@@ -86,7 +87,7 @@ function deleteEmployee(event) {
 
 /**
  * 
- * @param {string} employee Loops over employeeDatabase and splices the array at the index of the
+ * @param {string} employee Loops over employeeDatabase and splices the array at the index of the *FIRST*
  * match, removing it permanently from the array. Logged what was deleted and the new employeeDatabase
  * to ensure it was functioning correctly. 
  */
