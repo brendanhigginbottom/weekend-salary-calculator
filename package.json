@@ -1,0 +1,26 @@
+{
+  "name": "weekend-salary-calculator",
+  "version": "1.0.0",
+  "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendanhigginbottom/weekend-salary-calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brendanhigginbottom/weekend-salary-calculator/issues"
+  },
+  "homepage": "https://github.com/brendanhigginbottom/weekend-salary-calculator#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
