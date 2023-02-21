@@ -44,6 +44,7 @@ form input {
   td, 
   th {
    border: 2px solid #918152;
+   padding: 10px;
   }
 
   #delete {
@@ -53,4 +54,6 @@ form input {
   #salaryTotal {
     clear: both;
     float: right;
+    text-decoration: underline;
+    font-size: large;
   }
