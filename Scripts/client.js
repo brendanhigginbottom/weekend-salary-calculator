@@ -69,31 +69,28 @@ function addEmployee () {
 
 /**
  * 
- * @param {onClick} event Deletes employee information from the table and grabs first name to pass to
+ * @param {onClick} event Deletes employee information from the table and grabs ID to pass to
  * deleteFromEmployeeDatabase function. 
  * Calls addEmployee after employee has been deleted which will ensure monthly total is accurate.
- * *NOTE - This only works if there are no duplicate names. Deletes first instance if two of same name, 
- * *even weirder after that. 
- * Could grab additional info (or maybe just ID?) for more precise deletion 
- * but we're already in stretch mode!
+ * * NOTE: Functionality breaks if more than one employee has the same employee ID!
  */
 function deleteEmployee(event) {
-    let employee = event.target.parentElement.parentElement.firstElementChild.innerHTML;
-    console.log(employee);
+    let employeeID = event.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML;
+    console.log(employeeID);
     event.target.parentElement.parentElement.remove();
-    deleteFromEmployeeDatabase(employee);
+    deleteFromEmployeeDatabase(employeeID);
     addEmployee();
 }
 
 /**
  * 
- * @param {string} employee Loops over employeeDatabase and splices the array at the index of the *FIRST*
+ * @param {string} employeeID Loops over employeeDatabase and splices the array at the index of the employeeID
  * match, removing it permanently from the array. Logged what was deleted and the new employeeDatabase
  * to ensure it was functioning correctly. 
  */
-function deleteFromEmployeeDatabase(employee) {
+function deleteFromEmployeeDatabase(employeeID) {
     for (let toDelete of employeeDatabase) {
-        if (employee === toDelete.FirstName) {
+        if (employeeID === toDelete.ID) {
             console.log(employeeDatabase.splice(employeeDatabase.indexOf(toDelete), 1));
         }
     }
