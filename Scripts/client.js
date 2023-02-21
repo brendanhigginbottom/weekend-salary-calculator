@@ -114,11 +114,13 @@ function addSalary() {
     // interesting (for me) to note, 20,000 seems to be a string but 20000 works?
     if (monthlyTotal > 20000) {
         displaySalaryTotal.style.backgroundColor = 'red';
+        displaySalaryTotal.style.color = 'white';
         displaySalaryTotal.innerHTML = `
         Monthly Total: $${monthlyTotal}
         `;
     } else {
         displaySalaryTotal.style.backgroundColor = 'white';
+        displaySalaryTotal.style.color = 'black';
         displaySalaryTotal.innerHTML = `
         Monthly Total: $${monthlyTotal}
         `;

@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #918152;
+    color: #efece2;
+    text-align: center;
+}
+
+h2 {
+    margin: 5px 15px;
+    background-color: #918152;
+    color: #efece2;
+    padding-left: 2px;
+}
+
+form,
+form input {
+    margin: 5px 15px;
+    background-color: #eae6da;
+    border-color: #918152;
+    padding: 1px;
+}
+
+#submit {
+    float: right;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  table {
+    background-color: #efece2;
+    color: #918152;
+    width: auto;
+    margin: 0 auto;
+  }
+
+  td, 
+  th {
+   border: 2px solid #918152;
+  }
+
+  #delete {
+    align-items: center;
+  }
+
+  #salaryTotal {
+    clear: both;
+    float: right;
+  }
